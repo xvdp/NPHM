@@ -1,14 +1,15 @@
 import json
+from . import __codebase__ as CODEBASE
 
-CODE_BASE = '/PATH/TO/CLONED/REPO/'
-ASSETS = '/PATH/TO/CLONED/REPO/assets/'
+
+ASSETS = f'{CODEBASE}/assets/'
 SUPERVISION_IDENTITY = '/PATH/TO/YOUR/LARGE_TRAINING_DATA/IDENTITY/'
 SUPERVISION_DEFORMATION_OPEN = '/PATH/TO/YOUR/LARGE_TRAINING_DATA/EXPRESSIONS/'
 DATA_SINGLE_VIEW = '/PATH/TO/TEST_DATA/'
 DATA = '/PATH/TO/NPHM_DATASET/'
 
-DUMMY_DATA = '/PATH/TO/CLONED/REPO/dataset/dummy_data/dataset/'
-DUMMY_single_view = '/PATH/TO/CLONED/REPO/dataset/dummy_data/single_view/'
+DUMMY_DATA = f'{CODEBASE}dataset/dummy_data/dataset/'
+DUMMY_single_view = f'{CODEBASE}/dataset/dummy_data/single_view/'
 
 EXPERIMENT_DIR = '/PATH/TO/SAVE_CHECKPOINTS_AND_LOG_RECONSTRUCTIONS_DURING_TRAINING/'
 FITTING_DIR = '/PATH/TO/LOG_TEST_SET_RECONSTRUCTIONS'
@@ -20,9 +21,9 @@ FLAME_LM_INDICES_PATH = ASSETS + 'flame_up_lm_inds.npy'
 NUM_SPLITS = 200
 NUM_SPLITS_EXPR = 100
 
-with open(CODE_BASE + '/dataset/neutrals_open.json') as f:
+with open(CODEBASE + '/dataset/neutrals_open.json', encoding='utf8') as f:
     _neutrals = json.load(f)
-with open(CODE_BASE + '/dataset/neutrals_closed.json') as f:
+with open(CODEBASE + '/dataset/neutrals_closed.json', encoding='utf8') as f:
     _neutrals_closed = json.load(f)
 neutrals = {int(k): v for k,v in _neutrals.items()}
 neutrals_closed = {int(k): v for k,v in _neutrals_closed.items()}
